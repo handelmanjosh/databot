@@ -1,0 +1,40 @@
+modules:
+  confluence:contextMenu:
+    - key: highlight-test-v2-hello-world
+      title: DataBot - Highlight
+      resource: main
+      resolver:
+        function: resolver
+      viewportSize: large
+  confluence:contentAction:
+    - key: test-hello-world
+      resource: content-handler
+      resolver:
+        function: main
+      title: DataBot
+  function:
+    - key: resolver
+      handler: index.handler
+    - key: main
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+  - key: content-handler
+    path: static/content-handler/build
+permissions:
+  scopes:
+    - storage:app
+    - read:confluence-content.all
+    - write:confluence-content
+    - read:page:confluence
+    - write:label:confluence
+  external:
+    fetch:
+      backend:
+        - api.openai.com
+
+app:
+  id: ari:cloud:ecosystem::app/be38fade-878f-44d2-83fb-3d0c0622c1bd
+  runtime:
+    snapshots: false

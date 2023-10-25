@@ -1,0 +1,1 @@
+cd static/hello-world && npm run build && cd .. && cd content-handler && npm run build && cd ../.. && forge deploy
